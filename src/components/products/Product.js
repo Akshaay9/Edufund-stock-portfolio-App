@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import "./product.css";
+import SingleProducts from "./SingleProducts";
 import { NavLink } from "react-router-dom";
 function Product() {
   const { Products } = useSelector((state) => state.Products);
@@ -38,7 +39,7 @@ function Product() {
       <div className="product-listing">
         {filteredProducts.length === 0 && <h1>No Products found</h1>}
         {filteredProducts.map((ele) => (
-          <Products ele={ele} />
+          <SingleProducts ele={ele} />
         ))}
       </div>
     </div>
