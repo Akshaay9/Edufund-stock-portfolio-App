@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import AllProducts from "../../data/products.json";
 
 const initialState = {
-  Products: JSON.stringify(AllProducts),
+  Products: AllProducts
 };
 
 const ProductSLice = createSlice({

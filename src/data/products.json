@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "img": "https://yt3.ggpht.com/IM6lirUA0zm-Jo4JWAAODD_berKFWAl3YsUjVK2NU2-jFfJOaAU0iojRCVI0kczD-wWnV1Bo=s900-c-k-c0x00ffffff-no-rj",
+    "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTmx5am6NHJAJjvr76QB_4SYyTwRRx_y6vs4w&usqp=CAU",
     "meta": {
       "fund_house": "SBI Mutual Fund",
       "scheme_type": "Close Ended Schemes",
@@ -30,8 +30,8 @@
     "status": "SUCCESS"
   },
   {
-    "id": "2",
-    "img": "shorturl.at/bhGN3",
+    "id": 2,
+    "img": "https://static.businessworld.in/article/article_extra_large_image/1568893704_l3VCo1_Reliance_Industries_1.jpg",
     "meta": {
       "fund_house": "Reliance Mutual Fund",
       "scheme_type": "Open Ended Schemes",
@@ -105,7 +105,7 @@
   },
   {
     "id": 3,
-    "image": "shorturl.at/amrHR",
+    "img": "https://media-exp1.licdn.com/dms/image/C4E0BAQEI83hiniiggQ/company-logo_200_200/0/1628496896177?e=2159024400&v=beta&t=TKHof3tgMpg_zKwP73nGM1oNWx52_t7H8D8X88ENT9g",
     "meta": {
       "fund_house": "ABN  AMRO Mutual Fund",
       "scheme_type": "Open Ended Schemes",
@@ -283,7 +283,7 @@
   },
   {
     "id": 4,
-    "img": "shorturl.at/txGLR",
+    "img": "https://scontent.fblr22-1.fna.fbcdn.net/v/t39.30808-6/s960x960/244341285_239813424827620_3813228683107101929_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=e3f864&_nc_ohc=_N6Qv5DvRvAAX8dUGck&_nc_ht=scontent.fblr22-1.fna&oh=bce6fa8435e82c6510e68e619e58bc2d&oe=615DB107",
     "meta": {
       "fund_house": "UTI Mutual Fund",
       "scheme_type": "Close Ended Schemes",
