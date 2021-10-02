@@ -5,11 +5,13 @@ import Landing from "./pages/landing/landing";
 import ProductListing from "./pages/productListing/ProductListing";
 import Profile from "./pages/profile/Profile";
 import Product from "./pages/individualProduct/Product";
+import Nav from "./components/navbar/Nav";
 
 function App() {
   return (
     <>
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route path="/landing" element={<Landing />} />
           <Route path="/" element={<ProductListing />} />
