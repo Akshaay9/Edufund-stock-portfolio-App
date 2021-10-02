@@ -1,0 +1,38 @@
+.profile-container {
+  width: 30%;
+  /* border: 1px solid red; */
+  margin: auto;
+  border: 1px solid rgb(209, 208, 208);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+.profile-container > div {
+  width: 100%;
+  margin: 1rem 0rem;
+}
+.profile-container > div input {
+  width: 23rem;
+}
+select {
+  width: 23rem;
+  padding: 0.5rem 0rem;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid rgb(161, 161, 161);
+  /* transition: all 1000ms ease-in; */
+}
+.btn button {
+  width: 100%;
+}
+@media screen and (max-width: 780px) {
+  .profile-container {
+    width: 90%;
+  }
+  .profile-container > div input {
+    width: 18rem;
+  }
+  select {
+    width: 18rem;
+  }
+}

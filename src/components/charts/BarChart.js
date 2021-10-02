@@ -6,7 +6,7 @@ function BarChart({ ele }) {
     labels: ele.data.map((ele) => ele.date),
     datasets: [
       {
-        label: "# of Seconds",
+        label: "Net Asset Value over the years",
         data: ele.data.map((ele) => Number(ele.nav)),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",

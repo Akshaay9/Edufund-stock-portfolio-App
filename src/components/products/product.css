@@ -69,3 +69,32 @@
   text-align: center;
   padding: 0.5rem 0rem;
 }
+
+@media screen and (max-width: 780px) {
+  body{
+    overflow-x: hidden;
+  }
+  .product-listing {
+    width: 99%;
+  }
+  .product-list {
+    display: block;
+  }
+  .product-list .img img {
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
+  }
+  .product-data {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    line-height: 1.7rem;
+  }
+  .product-meta-data {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0.3rem;
+    border-radius: 0.2rem;
+    border: 1px solid rgb(216, 214, 214);
+  }
+}
