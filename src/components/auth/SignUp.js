@@ -96,15 +96,16 @@ function SignUp() {
             <div className="inputs">
               <div className="same-line">
                 <TextField
+                  value={firstName}
                   error={showError && firstNameVlidator(firstName)}
                   required={true}
                   type="email"
                   id="outlined-basic"
-                  value={firstName}
                   onChange={(e) => setFirstName((ele) => e.target.value)}
                   label={showError ? firstNameError(firstName) : "first name"}
                 />
                 <TextField
+                  value={lastName}
                   required={true}
                   type="email"
                   error={showError && lastNameValidator(lastName)}
@@ -150,6 +151,7 @@ function SignUp() {
               <div>
                 <TextField
                   required={true}
+                  value={email}
                   error={
                     showError && (email.length === 0 || emailValidator(email))
                   }
@@ -162,6 +164,7 @@ function SignUp() {
 
               <TextField
                 required={true}
+                value={pass}
                 onChange={(e) => setPass((ele) => e.target.value)}
                 type="email"
                 error={showError && (pass === "" || passowrdValidator(pass))}

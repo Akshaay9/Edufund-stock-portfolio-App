@@ -19,9 +19,7 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { state } = useLocation();
-  const { userData,  guestUser } = useSelector(
-    (state) => state.User
-  );
+  const { userData, guestUser } = useSelector((state) => state.User);
 
   const signupModalContainer = (e) => {
     if (e.target.classList.contains("login-sign-container")) {
@@ -52,7 +50,6 @@ function Login() {
   };
 
   const guestUserLogin = () => {
-    console.log("m");
     dispatch(logIn(guestUser));
     toast.success("logging you in");
     navigate("/");
@@ -79,6 +76,7 @@ function Login() {
               <div>
                 <TextField
                   required={true}
+                  value={email}
                   type="email"
                   onChange={(e) => setEmail((ele) => e.target.value)}
                   error={
@@ -91,6 +89,7 @@ function Login() {
 
               <TextField
                 required={true}
+                value={pass}
                 onChange={(e) => setPass((ele) => e.target.value)}
                 type=""
                 error={showError && (pass === "" || passowrdValidator(pass))}
