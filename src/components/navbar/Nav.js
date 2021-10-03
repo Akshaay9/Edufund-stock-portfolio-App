@@ -9,10 +9,21 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Button from "@material-ui/core/Button";
 import { NavLink } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { logOut } from "../../features/auth/AuthSlice";
+import { toast } from "react-toastify";
 
 function Nav() {
   const location = useLocation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const logUserOut = () => {
+    dispatch(logOut());
+    toast.success("logged you out");
+    navigate("/landing");
+  };
 
   return (
     <>
@@ -29,18 +40,20 @@ function Nav() {
             </Typography>
 
             <div>
-              <IconButton
-                size="xl"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                <NavLink to="/profile">
+              
+              <NavLink to="/profile">
+                <IconButton
+                  size="xl"
+                  aria-label="account of current user"
+                  aria-controls="menu-appbar"
+                  aria-haspopup="true"
+                  color="inherit"
+                >
                   <AccountCircle />
-                </NavLink>
-              </IconButton>
+                </IconButton>
+              </NavLink>
               <IconButton
+                onClick={() => logUserOut()}
                 size="xl"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

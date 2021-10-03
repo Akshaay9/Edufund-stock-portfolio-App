@@ -14,6 +14,8 @@ import {
   passowrdValidator,
 } from "../../utils/auth";
 import "./app.css";
+import { useDispatch, useSelector } from "react-redux";
+import { checkForLogin } from "../../utils/authorization";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -22,6 +24,7 @@ function SignUp() {
       navigate("/landing");
     }
   };
+  const { userData } = useSelector((state) => state.User);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,6 +33,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [showError, setShowError] = useState(false);
+  console.log(dob);
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +42,7 @@ function SignUp() {
     }
 
     if (checkFormErrorSignUp(firstName, lastName, gender, dob, email, pass)) {
-      
+     
       return;
     } else {
       setShowError((ele) => true);

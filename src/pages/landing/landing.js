@@ -1,13 +1,30 @@
-
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import SignUp from "../../components/auth/SignUp";
 import Login from "../../components/auth/Login";
 import "./landing.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 function Landing() {
   const location = useLocation();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+  const { isLoggedIn } = useSelector((state) => state.User);
+
+  console.log(isLoggedIn);
+
+
+  console.log(state);
+
+  useEffect(()=>{
+    if (isLoggedIn) {
+      console.log("d");
+      navigate(state?.from ? state.from : "/");
+    }
+  },[])
+
+
   return (
     <>
       {location.pathname.includes("login") && <Login />}

@@ -1,16 +1,20 @@
+//  rejex
 export const emailRegex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 export const passwordRejex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
 
+  // email
 export const emailValidator = (email) => {
   return !emailRegex.test(email);
 };
+// passowrd
 export const passowrdValidator = (pass) => {
   if (pass.search(/[A-Z]/) < 0) {
     return true;
   }
   return !passwordRejex.test(pass);
 };
+
 export const firstNameVlidator = (firstName) => {
   if (firstName === "" || firstName.length < 4) {
     return true;

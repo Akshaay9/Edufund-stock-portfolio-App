@@ -1,6 +1,6 @@
 import { Button, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 import {
   authValidator,
@@ -10,9 +10,19 @@ import {
   passowrdValidator,
 } from "../../utils/auth";
 import "./app.css";
+import { toast } from "react-toastify";
+import { checkForLogin } from "../../utils/authorization";
+import { useDispatch, useSelector } from "react-redux";
+import { logIn } from "../../features/auth/AuthSlice";
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { state } = useLocation();
+  const { userData, isLoggedIn } = useSelector((state) => state.User);
+  
+
+
   const signupModalContainer = (e) => {
     if (e.target.classList.contains("login-sign-container")) {
       navigate("/landing");
@@ -29,7 +39,12 @@ function Login() {
     }
 
     if (checkErrorForLogin(email, pass)) {
-      return;
+      const [user, isAuthenticated] = checkForLogin(email, pass, userData);
+      if (isAuthenticated) {
+        dispatch(logIn(user));
+        toast.success("logging you in");
+        navigate("/");
+      }
     } else {
       setShowError((ele) => true);
     }
