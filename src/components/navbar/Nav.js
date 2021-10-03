@@ -14,8 +14,6 @@ import { useLocation } from "react-router-dom";
 function Nav() {
   const location = useLocation();
 
-  console.log(location.pathname.includes("landing"));
-
   return (
     <>
       {!location.pathname.includes("landing") && (
@@ -39,9 +37,7 @@ function Nav() {
                 color="inherit"
               >
                 <NavLink to="/profile">
-                  <Button color="">
-                    <AccountCircle />
-                  </Button>
+                  <AccountCircle />
                 </NavLink>
               </IconButton>
               <IconButton
@@ -51,9 +47,7 @@ function Nav() {
                 aria-haspopup="true"
                 color="inherit"
               >
-                <Button color="">
-                  <LogoutIcon />
-                </Button>
+                <LogoutIcon />
               </IconButton>
             </div>
           </Toolbar>

@@ -38,12 +38,16 @@ function Product() {
   return (
     <div>
       <div className="search-bar">
-        <input type="text" placeholder="search for the product" onChange={(e) => debounce(e.target.value)} />
+        <input
+          type="text"
+          placeholder="search for the product"
+          onChange={(e) => debounce(e.target.value)}
+        />
       </div>
       <div className="product-listing">
         {filteredProducts.length === 0 && <h1>No Products found</h1>}
-        {filteredProducts.map((ele) => (
-          <SingleProducts ele={ele} />
+        {filteredProducts.map((ele, i) => (
+          <SingleProducts key={ele.id} ele={ele} />
         ))}
       </div>
     </div>
