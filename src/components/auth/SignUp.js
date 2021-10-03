@@ -1,6 +1,6 @@
 import { Button, Link, TextField } from "@material-ui/core";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import {
   authValidator,
   checkFormErrorSignUp,
@@ -15,7 +15,9 @@ import {
 } from "../../utils/auth";
 import "./app.css";
 import { useDispatch, useSelector } from "react-redux";
-import { checkForLogin } from "../../utils/authorization";
+import { checkForLogin, checkSignUp } from "../../utils/authorization";
+import { logIn } from "../../features/auth/AuthSlice";
+import { toast } from "react-toastify";
 
 function SignUp() {
   const navigate = useNavigate();
@@ -24,7 +26,7 @@ function SignUp() {
       navigate("/landing");
     }
   };
-  const { userData } = useSelector((state) => state.User);
+  const { userData, guestUser, user } = useSelector((state) => state.User);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,7 +35,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [pass, setPass] = useState("");
   const [showError, setShowError] = useState(false);
-  console.log(dob);
+  const dispatch = useDispatch();
 
   const formSubmit = (e) => {
     e.preventDefault();
@@ -42,12 +44,36 @@ function SignUp() {
     }
 
     if (checkFormErrorSignUp(firstName, lastName, gender, dob, email, pass)) {
-     
+      if (checkSignUp(email, userData, user)) {
+        toast.error("user alredy exists, please log in ");
+        return;
+      } else {
+        dispatch(
+          logIn({
+            id: userData.length + 1,
+            firstName,
+            lastName,
+            gender,
+            dob,
+            email,
+            pass,
+          })
+        );
+      }
+      toast.success("logging you in");
+      navigate("/");
       return;
     } else {
       setShowError((ele) => true);
+      return;
     }
-    return;
+  };
+
+  const guestUserLogin = () => {
+    console.log("m");
+    dispatch(logIn(guestUser));
+    toast.success("logging you in");
+    navigate("/");
   };
 
   return (
@@ -149,13 +175,17 @@ function SignUp() {
                 color="primary"
                 onClick={(e) => formSubmit(e)}
               >
-                Save Changes
+                Sign-up
               </Button>
             </div>
           </form>
           <p>or</p>
           <div className="btn">
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => guestUserLogin()}
+            >
               Login as guest
             </Button>
           </div>

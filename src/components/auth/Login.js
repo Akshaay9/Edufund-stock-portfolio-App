@@ -19,9 +19,9 @@ function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { state } = useLocation();
-  const { userData, isLoggedIn } = useSelector((state) => state.User);
-  
-
+  const { userData,  guestUser } = useSelector(
+    (state) => state.User
+  );
 
   const signupModalContainer = (e) => {
     if (e.target.classList.contains("login-sign-container")) {
@@ -49,6 +49,13 @@ function Login() {
       setShowError((ele) => true);
     }
     return;
+  };
+
+  const guestUserLogin = () => {
+    console.log("m");
+    dispatch(logIn(guestUser));
+    toast.success("logging you in");
+    navigate("/");
   };
 
   return (
@@ -103,7 +110,11 @@ function Login() {
           </form>
           <p>or</p>
           <div className="btn">
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => guestUserLogin()}
+            >
               Login as guest
             </Button>
           </div>

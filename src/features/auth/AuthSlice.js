@@ -9,7 +9,7 @@ const initialState = {
       gender: "male",
       dob: "1998-8-9",
       email: "test@gmail.com",
-      passowrd: "Test98#",
+      pass: "Test98#",
     },
     {
       id: 2,
@@ -18,11 +18,8 @@ const initialState = {
       gender: "male",
       dob: "1998-8-9",
       email: "admin@gmail.com",
-      passowrd: "Test98#",
+      pass: "Test98#",
     },
-    localStorage.getItem("user")
-      ? JSON.parse(localStorage.getItem("user"))
-      : {},
   ],
   isLoggedIn: localStorage.getItem("auth")
     ? JSON.parse(localStorage.getItem("auth"))
@@ -30,6 +27,15 @@ const initialState = {
   user: localStorage.getItem("user")
     ? JSON.parse(localStorage.getItem("user"))
     : {},
+  guestUser: {
+    id: 1,
+    firstName: "akshay",
+    lastName: "sr",
+    gender: "male",
+    dob: "1998-8-9",
+    email: "test@gmail.com",
+    pass: "Test98#",
+  },
 };
 
 const AuthSLice = createSlice({
@@ -38,18 +44,19 @@ const AuthSLice = createSlice({
   reducers: {
     logIn: (state, { payload }) => {
       state.isLoggedIn = true;
+      state.user = payload;
       localStorage.setItem("auth", JSON.stringify(true));
       localStorage.setItem("user", JSON.stringify(payload));
     },
     logOut: (state) => {
       state.isLoggedIn = false;
+      state.user = {};
       localStorage.removeItem("auth");
       localStorage.removeItem("user");
     },
-    signUp: (state, { paylad }) => {},
   },
   extraReducers: {},
 });
 
-export const { logIn, logOut, signUp } = AuthSLice.actions;
+export const { logIn, logOut } = AuthSLice.actions;
 export default AuthSLice.reducer;
