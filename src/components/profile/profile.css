@@ -25,6 +25,16 @@ select {
 .btn button {
   width: 100%;
 }
+.error{
+  font-size: 12px;
+
+}
+.success{
+  color:green
+}
+.fail{
+  color: red;
+}
 @media screen and (max-width: 780px) {
   .profile-container {
     width: 90%;

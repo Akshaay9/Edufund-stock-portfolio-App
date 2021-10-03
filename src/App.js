@@ -13,6 +13,8 @@ function App() {
         <Nav />
         <Routes>
           <Route path="/landing" element={<Landing />} />
+          <Route path="/landing/signup" element={<Landing />} />
+          <Route path="/landing/login" element={<Landing />} />
           <Route path="/" element={<ProductListing />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/product/:id" element={<Product />} />

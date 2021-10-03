@@ -1,12 +1,17 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import SignUp from "../../components/auth/SignUp";
+import Login from "../../components/auth/Login";
 import "./landing.css";
+import { useLocation } from "react-router-dom";
 
 function Landing() {
+  const location = useLocation();
   return (
     <>
-      {/* {location.pathname.includes("login") && <Login />} */}
-      {/* {location.pathname.includes("signup") && <SignUp />} */}
+      {location.pathname.includes("login") && <Login />}
+      {location.pathname.includes("signup") && <SignUp />}
 
       <div className="landing-bg ">
         <div className="landing-bg-logo ">
@@ -22,7 +27,7 @@ function Landing() {
           </div>
           <div className="landing-bg-maintitle">
             <h1>
-              Application to track your favourite 
+              Application to track your favourite
               <span style={{ color: "#4f46e5" }}> mutual funds.</span>
             </h1>
           </div>
