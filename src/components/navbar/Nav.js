@@ -39,8 +39,7 @@ function Nav() {
               <NavLink to="/"> fund.tech</NavLink>
             </Typography>
 
-            <div>
-              
+            <div className="nav-right">
               <NavLink to="/profile">
                 <IconButton
                   size="xl"
