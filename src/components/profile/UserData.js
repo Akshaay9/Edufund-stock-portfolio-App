@@ -1,10 +1,11 @@
 import { Button, TextField } from "@material-ui/core";
 
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./profile.css";
 import { formatDate } from "../../utils/dateFormat";
 import {
+  checkForProfileData,
   emailError,
   emailValidator,
   firstNameError,
@@ -13,16 +14,50 @@ import {
   lastNameError,
   lastNameValidator,
 } from "../../utils/auth";
+import { fieldsUpdated } from "../../utils/filedsUpdated";
+import { toast } from "react-toastify";
+import { updateData } from "../../features/auth/AuthSlice";
 
 function UserData() {
-  const { guestUser } = useSelector((state) => state.User);
+  const dispatch = useDispatch();
+  const { guestUser, userData } = useSelector((state) => state.User);
   const [firstName, setFirstName] = useState(guestUser?.firstName || "");
   const [lastName, setLastName] = useState(guestUser?.lastName || "");
   const [gender, setGender] = useState(guestUser?.gender || "");
   const [dob, setDOb] = useState(guestUser?.dob || "");
   const [email, setEmail] = useState(guestUser?.email || "");
   const [showError, setShowError] = useState(false);
-  console.log(formatDate(dob));
+
+  console.log(guestUser, userData);
+
+  const formSubmit = () => {
+    if (showError) {
+      setShowError((ele) => false);
+    }
+    if (checkForProfileData(firstName, lastName, gender, dob, email)) {
+      if (
+        fieldsUpdated({ firstName, lastName, gender, dob, email }, guestUser)
+      ) {
+        dispatch(
+          updateData({
+            id: guestUser.id,
+            firstName,
+            lastName,
+            gender,
+            dob,
+            email,
+          })
+        );
+        toast.success("successfully updated");
+        return;
+      } else {
+        toast.warning("please update any field to continue");
+        return;
+      }
+    } else {
+      setShowError((ele) => true);
+    }
+  };
 
   return (
     <>
@@ -103,7 +138,11 @@ function UserData() {
             />
           </div>
           <div className="btn">
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => formSubmit()}
+            >
               Save Changes
             </Button>
           </div>

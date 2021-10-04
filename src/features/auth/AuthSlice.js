@@ -54,9 +54,26 @@ const AuthSLice = createSlice({
       localStorage.removeItem("auth");
       localStorage.removeItem("user");
     },
+    updateData: (state, { payload }) => {
+      state.guestUser = { ...state.guestUser, ...payload };
+      state.userData = state.userData.map((ele) => {
+        if (ele.id === payload.id) {
+          console.log({
+            ...ele,
+            ...payload,
+          });
+          return {
+            ...ele,
+            ...payload,
+          };
+        } else {
+          return ele;
+        }
+      });
+    },
   },
   extraReducers: {},
 });
 
-export const { logIn, logOut } = AuthSLice.actions;
+export const { logIn, logOut, updateData } = AuthSLice.actions;
 export default AuthSLice.reducer;

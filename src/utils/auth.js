@@ -3,7 +3,7 @@ export const emailRegex = /[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/;
 export const passwordRejex =
   /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{6,}$/;
 
-  // email
+// email
 export const emailValidator = (email) => {
   return !emailRegex.test(email);
 };
@@ -96,6 +96,26 @@ export const checkFormErrorSignUp = (
 
 export const checkErrorForLogin = (email, pass) => {
   if (!emailValidator(email) && !passowrdValidator(pass)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+export const checkForProfileData = (
+  firstName,
+  lastName,
+  gender,
+  dob,
+  email
+) => {
+  if (
+    !firstNameVlidator(firstName) &&
+    !lastNameValidator(lastName) &&
+    !genderValidator(gender) &&
+    dob !== "" &&
+    !emailValidator(email)
+  ) {
     return true;
   } else {
     return false;
