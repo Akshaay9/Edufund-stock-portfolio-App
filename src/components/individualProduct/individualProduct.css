@@ -1,0 +1,10 @@
+.chart {
+  width: 70%;
+  margin: auto;
+}
+
+@media screen and (max-width: 720px) {
+  .chart {
+    width: 90%;
+  }
+}

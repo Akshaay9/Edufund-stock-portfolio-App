@@ -1,0 +1,76 @@
+.login-sign-container {
+  width: 100%;
+  height: 120vh;
+  position: absolute;
+  position: fixed;
+  top: 57%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  z-index: 2 !important;
+}
+.logn-container {
+  width: 28%;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 1rem;
+  color: black !important;
+  cursor: pointer;
+}
+.logn-container h1 {
+  font-size: 1.5rem;
+  text-align: center;
+  padding-top: 0.3rem;
+  font-family: var(--font-sans-serif);
+  line-height: 2.3rem;
+  margin: 0 0 0.1rem;
+  color: black;
+}
+.logn-container p {
+  text-align: center;
+  text-align: center;
+  color: #777b80;
+  font-size: 14px;
+  padding-top: 0rem;
+  line-height: 1.5rem;
+}
+.inputs {
+
+  text-align: center;
+  /* margin: 1rem 0rem; */
+}
+.inputs div {
+  margin: .3rem 0rem;
+}
+.inputs input{
+    width: 18rem
+}
+.logn-container{
+    padding: 0rem .5rem 1rem .5rem;
+}
+.same-line{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.same-line input{
+  width: 8rem;
+}
+.logn-container select{
+  /* border: 1px solid red; */
+  width: 18.5rem;
+}
+@media screen and (max-width:780px) {
+
+    .logn-container {
+  width: 90%;
+ 
+}
+}
