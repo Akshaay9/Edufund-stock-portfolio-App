@@ -121,3 +121,11 @@ export const checkForProfileData = (
     return false;
   }
 };
+
+export const checkForPass = (pass) => {
+  if (!passowrdValidator(pass)) {
+    return true;
+  } else {
+    return false;
+  }
+};

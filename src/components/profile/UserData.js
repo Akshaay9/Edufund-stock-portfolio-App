@@ -20,15 +20,13 @@ import { updateData } from "../../features/auth/AuthSlice";
 
 function UserData() {
   const dispatch = useDispatch();
-  const { guestUser, userData } = useSelector((state) => state.User);
-  const [firstName, setFirstName] = useState(guestUser?.firstName || "");
-  const [lastName, setLastName] = useState(guestUser?.lastName || "");
-  const [gender, setGender] = useState(guestUser?.gender || "");
-  const [dob, setDOb] = useState(guestUser?.dob || "");
-  const [email, setEmail] = useState(guestUser?.email || "");
+  const { user } = useSelector((state) => state.User);
+  const [firstName, setFirstName] = useState(user?.firstName || "");
+  const [lastName, setLastName] = useState(user?.lastName || "");
+  const [gender, setGender] = useState(user?.gender || "");
+  const [dob, setDOb] = useState(user?.dob || "");
+  const [email, setEmail] = useState(user?.email || "");
   const [showError, setShowError] = useState(false);
-
-  console.log(guestUser, userData);
 
   const formSubmit = () => {
     if (showError) {
@@ -36,11 +34,11 @@ function UserData() {
     }
     if (checkForProfileData(firstName, lastName, gender, dob, email)) {
       if (
-        fieldsUpdated({ firstName, lastName, gender, dob, email }, guestUser)
+        fieldsUpdated({ firstName, lastName, gender, dob, email }, user)
       ) {
         dispatch(
           updateData({
-            id: guestUser.id,
+            id: user.id,
             firstName,
             lastName,
             gender,

@@ -55,13 +55,9 @@ const AuthSLice = createSlice({
       localStorage.removeItem("user");
     },
     updateData: (state, { payload }) => {
-      state.guestUser = { ...state.guestUser, ...payload };
+      state.user = { ...state.user, ...payload };
       state.userData = state.userData.map((ele) => {
         if (ele.id === payload.id) {
-          console.log({
-            ...ele,
-            ...payload,
-          });
           return {
             ...ele,
             ...payload,
